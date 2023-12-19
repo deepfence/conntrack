@@ -220,6 +220,8 @@ loop:
 				conn.MsgType = NfctMsgDestroy
 			}
 
+			conn.Pid = msg.Header.Pid
+
 			cb(*conn)
 		}
 	}
@@ -263,6 +265,8 @@ type Conn struct {
 
 	// Error, if any.
 	Err error
+
+	Pid uint32
 }
 
 // ConnTCP decides which way this connection is going and makes a ConnTCP.
